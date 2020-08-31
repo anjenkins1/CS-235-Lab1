@@ -63,13 +63,16 @@ public:
         
         //Searches tasks for specified string, then removes the string at the found position
         for (int i = 0; i < tasks.size(); i++) {
-
             if (tasks[i].find(_task) != std::string::npos) {
                 cout << "Removing " << tasks[i] << endl;
-                tasks.erase(i);
+                tasks.erase(tasks.begin() + i);
                 return 1;
             }
         }
+
+        //Outputs could not find error
+        cout << "Sorry, there is no task that has that description" << endl;
+        
         return 0;
     }
 
@@ -79,6 +82,11 @@ public:
     virtual void printTodoList()
     {
         cout << "In print" << endl;
+
+        for (int i = 0; i < tasks.size(); i++) {
+            cout << tasks[i] << endl;
+        }
+
     }
 
     /*
@@ -87,6 +95,12 @@ public:
     virtual void printDaysTasks(string _date)
     {
         cout << "In list" << endl;
+
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks[i].find(_date) != std::string::npos) {
+                cout << tasks[i] << endl;
+            }
+        }
     }
 };
 

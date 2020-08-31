@@ -19,11 +19,22 @@ int main(int argc, char *argv[0])
 		cout << "date " << date << " task " << task << endl;
 		test1.add(date, task);
 	}
+
 	else if (firstarg.compare("remove") == 0) {
 		string task = argv[2];
-
 		cout << "task to remove: " << task << endl;
 		test1.remove(task);
+	}
+
+  else if (firstarg.compare("print") == 0) {
+		cout << "Printing all: " << endl;
+    test1.printTodoList();
+	}
+
+  else if (firstarg.compare("print_date") == 0) {
+		string date = argv[2];
+    cout << "Printing " << date << "'s tasks: " << endl;
+    test1.printDaysTasks(date);
 	}
 
 }
