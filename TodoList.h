@@ -30,9 +30,11 @@ public:
 
         else cout << "Unable to open file";
     }
+
     virtual ~TodoList() {
         cout << "In destructor" << endl;
 
+        //Open TODO, use truncate to delete current contents, then add all tasks
         ofstream outFile;
         outFile.open("TODO.txt", ofstream::out | ofstream::trunc);
 
