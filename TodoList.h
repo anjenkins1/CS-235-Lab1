@@ -14,7 +14,6 @@ class TodoList: public TodoListInterface {
     vector<string> tasks;
 public:
     TodoList() {
-        cout << "In constructor" << endl;
 
         //Open TODO and read lines into current working vector "tasks"
         string line;
@@ -32,7 +31,6 @@ public:
     }
 
     virtual ~TodoList() {
-        cout << "In destructor" << endl;
 
         //Open TODO, use truncate to delete current contents, then add all tasks
         ofstream outFile;
@@ -50,7 +48,10 @@ public:
     */
     virtual void add(string _duedate, string _task)
     {
-        cout << "In add" << endl;
+        cout << "ADDING TASK" << endl;
+        
+		    cout << "Date: " << _duedate << " Task: " << _task << endl;
+
         tasks.push_back(_duedate + " - " + _task);
     }
 
@@ -61,12 +62,11 @@ public:
     */
     virtual int remove(string _task)
     {
-        cout << "In remove" << endl;
         
         //Searches tasks for specified string, then removes the string at the found position
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks[i].find(_task) != std::string::npos) {
-                cout << "Removing " << tasks[i] << endl;
+                cout << "REMOVING TASK: " << tasks[i] << endl;
                 tasks.erase(tasks.begin() + i);
                 return 1;
             }
@@ -83,7 +83,7 @@ public:
     */
     virtual void printTodoList()
     {
-        cout << "In print" << endl;
+        cout << "ALL TASKS" << endl;
 
         for (int i = 0; i < tasks.size(); i++) {
             cout << tasks[i] << endl;
@@ -96,7 +96,7 @@ public:
     */
     virtual void printDaysTasks(string _date)
     {
-        cout << "In list" << endl;
+        cout << "TASKS FOR " << _date << endl;
 
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks[i].find(_date) != std::string::npos) {
